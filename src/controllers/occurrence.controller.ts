@@ -1,8 +1,9 @@
-import { Controller, Get, HttpStatus, Param, Res } from "@nestjs/common";
-import { OccurrenceService } from "src/services/occurrence/occurrence.service";
+import { Controller, Get, HttpCode, HttpStatus, Param, Res } from "@nestjs/common";
+import { OccurrenceService } from "../services/occurrence/occurrence.service";
 
-import { Response } from 'express';
 import { ApiResponse, ApiTags } from "@nestjs/swagger";
+import { Response } from 'express';
+import { ok } from "assert";
 
 @Controller("/occurrence")
 @ApiTags("Occurrence")
@@ -13,13 +14,14 @@ export class OccurrenceController {
     @ApiResponse({ status: 200, description: 'Request OK.' })
     @ApiResponse({ status: 500, description: 'Internal Server Error.' })
     @Get("/all")
-    getAllOccurrence(): string {
-        return this.service.registerGroup();
+    getAllOccurrence(): [] {
+        return this.service.getAllOcurrences();
     }
 
     @Get("/by-user/:id")
-    getOccurrenceByUser(@Param('id') id: string, @Res() res: Response) {
-        res.status(HttpStatus.OK).send(id);
+    @HttpCode(200)
+    getOccurrenceByUser(@Param('id') id: string) {
+        return this.service.getOccurrenceById(parseInt(id));
     }
 
     @Get('/aproved/by-user/:id')

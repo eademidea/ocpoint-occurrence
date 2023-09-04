@@ -1,6 +1,6 @@
 import { Test, TestingModule } from "@nestjs/testing";
+import { OccurrenceService } from "../services/occurrence/occurrence.service";
 import { OccurrenceController } from "./occurrence.controller";
-import { OccurrenceService } from "src/services/occurrence/occurrence.service";
 
 describe('OccurrenceController', () => {
     let occurrenceController: OccurrenceController;
@@ -14,9 +14,17 @@ describe('OccurrenceController', () => {
         occurrenceController = app.get<OccurrenceController>(OccurrenceController);
     })
 
-    describe('Cadastro de grupos de usuário', () => {
-        it('Should register a new user group...', () => {
-            expect(occurrenceController.getOccurrenceByUser('1',null)).toBe('1');
+
+    describe('Obter todas ocorrencias...', () => {
+        it('Should get all occurences...', () => {
+            expect(occurrenceController.getAllOccurrence().length == 0).toBe(true);
+        });
+    });
+
+    describe('Obter todas ocorrencias...', () => {
+        it('Should get all occurrences by user id...', () => {
+            expect(occurrenceController.getOccurrenceByUser('2').length == 0).toBe(true);
         })
-    })
-})
+    });
+
+});
