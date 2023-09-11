@@ -3,7 +3,6 @@ import { OccurrenceService } from "../services/occurrence/occurrence.service";
 
 import { ApiResponse, ApiTags } from "@nestjs/swagger";
 import { Response } from 'express';
-import { ok } from "assert";
 
 @Controller("/occurrence")
 @ApiTags("Occurrence")

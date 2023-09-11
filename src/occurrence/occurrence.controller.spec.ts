@@ -1,6 +1,6 @@
 import { Test, TestingModule } from "@nestjs/testing";
-import { OccurrenceService } from "../services/occurrence/occurrence.service";
 import { OccurrenceController } from "./occurrence.controller";
+import { OccurrenceService } from "./occurrence.service";
 
 describe('OccurrenceController', () => {
     let occurrenceController: OccurrenceController;
