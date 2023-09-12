@@ -6,8 +6,7 @@ import { InjectModel } from '@nestjs/sequelize';
 @Injectable()
 export class UsersService {
   constructor(
-    @InjectModel(User) private userRepository: typeof User,
-  ) { }
+    @InjectModel(User) private userRepository: typeof User) { }
 
   async findAll(): Promise<User[]> {
     return this.userRepository.findAll();
