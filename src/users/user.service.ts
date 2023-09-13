@@ -9,7 +9,7 @@ export class UsersService {
     @InjectModel(User) private userRepository: typeof User) { }
 
   async findAll(): Promise<User[]> {
-    return this.userRepository.findAll();
+    return await this.userRepository.findAll();
   }
 
   async findById(id: number) {

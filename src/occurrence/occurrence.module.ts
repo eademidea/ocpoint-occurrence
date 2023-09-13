@@ -1,9 +1,18 @@
 import { Module } from '@nestjs/common';
 import { OccurrenceService } from './occurrence.service';
+import { OccurrenceController } from './occurrence.controller';
+import { SequelizeModule } from '@nestjs/sequelize';
+import { Occurrence } from './ocurrence.entity';
+import { User } from 'src/users/user.entity';
 
 @Module({
-    controllers: [],
+    controllers: [OccurrenceController],
     providers: [OccurrenceService],
-    imports: []
+    imports: [
+        SequelizeModule.forFeature([Occurrence, User])
+    ],
+    exports: [
+        OccurrenceService
+    ]
 })
-export class OccurrenceModule {}
+export class OccurrenceModule { }
