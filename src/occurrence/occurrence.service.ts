@@ -16,12 +16,15 @@ export class OccurrenceService {
     }
 
     async getOccurrenceByUser(collaboratorId: number) {
-        // return await this.connection.query(`SELECT * FROM tb_occurrence where "collaboratorId" = ${collaboratorId};`);
         return await this.ocurrenceRepository.findAll({where: {collaboratorId}, include: {all: true}});
     }
 
     async generateOccurrence(ocurrence: Occurrence) {
         await this.ocurrenceRepository.create(ocurrence);
+    }
+
+    async aproveOccurrence(id:number) {
+        return this.connection.query(`update tb_occurrence set "status" = 'APROVADO' where id = ${id} `); // TODO: melhorar a forma que isto acontece criar um enum ou alguma outra estrutura.
     }
 
 }
