@@ -1,5 +1,7 @@
 OCPOINT OCCURRENCE SERVICE
 
+Obs: Projeto ainda em andamento ... 
+
 
 ## Installation
 
